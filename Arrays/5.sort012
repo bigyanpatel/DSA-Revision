@@ -1,0 +1,41 @@
+lc-75 https://leetcode.com/problems/sort-colors/
+
+/*
+Approach:
+    low mid hi
+    if curr ele is 0 swap mid with lo and update both ++;
+    if curr ele is 1 update mid++;
+    if curr ele is 2 swap mid and high and update hi--;
+ */
+
+class Solution {
+    public void sortColors(int[] nums) {
+       int lo = 0;
+        int hi = nums.length - 1;
+        int mid = 0;
+        int temp;
+        while(mid <= hi){
+            switch(nums[mid]){
+                case 0: {
+                    temp = nums[lo];
+                    nums[lo] = nums[mid];
+                    nums[mid] = temp;
+                    lo++;
+                    mid++;
+                    break;
+                }
+                case 1: {
+                    mid++;
+                    break;
+                }
+                case 2: {
+                    temp = nums[mid];
+                    nums[mid] = nums[hi];
+                    nums[hi] = temp;
+                    hi--;
+                    break;
+                }
+            }
+        } 
+    }
+}
